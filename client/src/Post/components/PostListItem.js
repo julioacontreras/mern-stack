@@ -1,15 +1,30 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card } from '@material-ui/core';
+import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 
+const useStyles = makeStyles((theme) => ({
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  }
+}));
+
 function PostListItem({ post, onDelete }) {
+  const classes = useStyles();
   return (
     <Card className="w-100 my-4">
+      <CardMedia
+        className={classes.media}
+        image={post.imageUrl}
+        title="Card image"
+      />      
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
           <Link to={`/posts/${post.cuid}/${post.slug}`} >

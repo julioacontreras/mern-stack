@@ -9,7 +9,7 @@ module.exports = (app) => {
 
   addPost = async (req, res) => {
     if (!req.body.post.title || !req.body.post.content) {
-      res.status(403).end();
+      res.status(403).json({});
       return
     }
 
@@ -27,11 +27,22 @@ module.exports = (app) => {
     newPost.name = sanitizeHtml(user.name);
     newPost.userId = sanitizeHtml(user.id);
   
+    // upload image in cloudinary and save path in model
+    const imageUrl = req.body.post.imageUrl;
+    if (imageUrl) {
+      const response = await app.cloudinary.upload(imageUrl, {
+        folder: 'assets/img'
+      })
+      if (!response.error) {
+        newPost.image = response.result.url;
+      }
+    }
+
     newPost.slug = slug(newPost.title.toLowerCase(), { lowercase: true });
     newPost.cuid = cuid();
     newPost.save((err, saved) => {
       if (err) {
-        res.status(500).send(err);
+        res.status(500).json({ err });
         return
       }
       res.json({ post: saved });

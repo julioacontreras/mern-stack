@@ -16,6 +16,9 @@ require('./services/auth/register')(app, (data) => {
     return User.find(data)
 });
 
+// register cloudnary
+require('./services/cloudinary/register')(app);
+
 // prepare & register routes
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());

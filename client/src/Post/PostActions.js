@@ -21,6 +21,7 @@ export function addPostRequest(post) {
       post: {
         title: post.title,
         content: post.content,
+        imageUrl: post.imageUrl
       },
     }).then(({ data, res }) => dispatch(addPost(data.post)));
   };
@@ -36,14 +37,24 @@ export function addPosts(posts) {
 export function fetchPosts() {
   return (dispatch) => {
     return callApi('posts').then(({ data, res }) => {
-      dispatch(addPosts(data.posts));
+      if (res.ok) {
+        dispatch(addPosts(data.posts));
+      } else {
+        return dispatch(errorCreatePost())
+      }
     });
   };
 }
 
 export function fetchPost(cuid) {
   return (dispatch) => {
-    return callApi(`posts/${cuid}`).then(({ data, res }) => dispatch(addPost(data.post)));
+    return callApi(`posts/${cuid}`).then(({ data, res }) => {
+      if (res.ok) {
+        return dispatch(addPost(data.post))
+      } else {
+        return dispatch(errorCreatePost())
+      }
+    });
   };
 }
 

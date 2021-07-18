@@ -9,7 +9,6 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
-    "cloudinary": "^1.26.2",
     "fetch": "^1.1.0",
     "http-proxy-middleware": "^2.0.1",
     "isomorphic-fetch": "^2.2.1",
