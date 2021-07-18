@@ -1,17 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const PostController = require('../controllers/post.controller');
+module.exports = ({ app, router }) => {
+  const PostController = require('../controllers/post')(app);
 
-// Get all Posts
-router.route('/posts').get(PostController.getPosts);
+  router.route('/posts').get(PostController.getPosts);
+  router.route('/posts/:cuid').get(PostController.getPost);
+  router.route('/posts').post(app.auth.middleware.isAuthenticated, PostController.addPost);
+  router.route('/posts/:cuid').delete(app.auth.middleware.isAuthenticated, PostController.deletePost);
 
-// Get one post by cuid
-router.route('/posts/:cuid').get(PostController.getPost);
-
-// Add a new Post
-router.route('/posts').post(PostController.addPost);
-
-// Delete a post by cuid
-router.route('/posts/:cuid').delete(PostController.deletePost);
-
-module.exports = router;
+  return router;
+}

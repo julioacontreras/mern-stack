@@ -1,0 +1,47 @@
+POST http://localhost:3000/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "john.connor",
+    "password": "qwert"
+}
+
+###
+
+POST http://localhost:3000/api/auth/signup
+Content-Type: application/json
+
+{
+    "name": "Pepe",
+    "username": "pepe.connor",
+    "password": "qwert"
+}
+
+###
+
+POST http://localhost:3000/api/auth/logout
+
+###
+
+GET http://localhost:3000/api/posts
+
+###
+
+GET http://localhost:3000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjNlNDcwNjFhNjdkNDc3NDIyZWJjYSIsImlhdCI6MTYyNjU5NzkyM30.eWZj8U-MNo59b344C6S72IeRcg7GNw09hLXWpaDoZ58
+
+###
+
+POST http://localhost:3000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjNlNDcwNjFhNjdkNDc3NDIyZWJjYSIsImlhdCI6MTYyNjU5NjUwOH0.XKDUIogYUJIJHUERsm50MN9rogbozQzrFgV56ADQ2Y0
+Content-Type: application/json
+
+{
+  "post": {
+    "name": "John Connor",
+    "userId": "",
+    "title": "Post 1",
+    "content": "Content post 1",
+    "slug": "post-1"
+  }
+}

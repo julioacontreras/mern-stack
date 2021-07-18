@@ -9,9 +9,9 @@ import { addPostRequest, deletePostRequest, fetchPosts } from '../../PostActions
 import Logo from '../../../logo.svg';
 
 const PostListPage = ({ showAddPost }) => {
-
   const dispatch = useDispatch();
   const posts = useSelector(state => state.posts.data);
+  const token = useSelector(state => state.auth.token);
 
   useEffect(() => {
     dispatch(fetchPosts());
@@ -39,20 +39,27 @@ const PostListPage = ({ showAddPost }) => {
       </div>
       <hr />
       <div className="row">
-        <div className="col-6">
-          <PostCreateWidget addPost={handleAddPost} showAddPost={showAddPost} />
-        </div>
-        <div className="col-6">
-          <PostList handleDeletePost={handleDeletePost} posts={posts} />
-        </div>
+        { token ? (
+            <div className="col-6">
+              <PostCreateWidget addPost={handleAddPost} showAddPost={showAddPost} />
+            </div>
+        ) : null }
+        { token ? (
+          <div className="col-6">
+              <PostList handleDeletePost={handleDeletePost} posts={posts} />
+            </div>
+        ) :
+          <div className="col-12">
+            <PostList handleDeletePost={handleDeletePost} posts={posts} />
+          </div>    
+        }
       </div>
     </div>
   );
 };
 
 PostListPage.propTypes = {
-  showAddPost: PropTypes.bool.isRequired
+  showAddPost: PropTypes.bool
 };
-
 
 export default PostListPage;

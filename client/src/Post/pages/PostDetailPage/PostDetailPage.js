@@ -11,7 +11,6 @@ export function PostDetailPage() {
   const post = useSelector(state => state.posts.data.find(currentPost => (currentPost.cuid === cuid)));
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     if (!post) dispatch(fetchPost(cuid));
   }, []);

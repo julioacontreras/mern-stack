@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 // Import Components
 import PostListItem from './PostListItem';
-
 function PostList(props) {
   return (
     <div className="d-flex flex-column w-100">

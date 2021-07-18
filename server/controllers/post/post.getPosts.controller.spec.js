@@ -1,9 +1,9 @@
 const supertest = require('supertest');
-const app = require('../index');
-const connection = require('../tests/connection');
-const Post = require('../models/post');
+const app = require('../../index');
+const connection = require('../../tests/connection');
+const Post = require('../../models/post');
 
-describe('Test getPost method', () => {
+describe('Test method getPosts', () => {
 
   beforeAll((done) => {
     connection.openConnect(done)

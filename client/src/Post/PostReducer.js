@@ -1,7 +1,10 @@
-import { ADD_POST, ADD_POSTS, DELETE_POST } from './PostActions';
+import { ADD_POST, ADD_POSTS, DELETE_POST, ERROR_CREATE_POST, ERROR_DELETE_POST } from './PostActions';
 
 // Initial State
-const initialState = { data: [] };
+const initialState = {
+  data: [],
+  errorMessage: ''
+};
 
 const PostReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -19,7 +22,19 @@ const PostReducer = (state = initialState, action) => {
       return {
         data: state.data.filter(post => post.cuid !== action.cuid),
       };
+    
+    case ERROR_CREATE_POST :
+      return {
+        data: state.data,
+        errorMessage: 'Error trying create post',
+      };
 
+    case ERROR_DELETE_POST :
+      return {
+        data: state.data,
+        errorMessage: 'Error trying delete post',
+      };
+  
     default:
       return state;
   }
