@@ -2,7 +2,6 @@ const connection = require('../tests/connection');
 const Post = require('../models/post');
 
 describe('Test getPost method', () => {
-
   beforeAll((done) => {
     connection.openConnect(done)
   });
@@ -15,6 +14,7 @@ describe('Test getPost method', () => {
     try {
       const post = await Post.create({
         name: 'John',
+        userId: '1',
         title: 'post 1',
         content: 'hellow world',
         slug: 'post',
@@ -22,6 +22,7 @@ describe('Test getPost method', () => {
       });
       expect(1).toEqual(1);
     } catch (error) {
+      console.error(error)
       expect(0).toEqual(1);
     }
   });
@@ -39,5 +40,4 @@ describe('Test getPost method', () => {
       expect(1).toEqual(1);
     }
   });
-
 });

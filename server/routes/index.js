@@ -4,5 +4,5 @@ module.exports = (app) => {
   require('./auth.routes')({ app, router });
   require('./post.routes')({ app, router });
 
-  return router
+  return router;
 }

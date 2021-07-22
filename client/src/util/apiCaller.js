@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import { Cookies  } from 'react-cookie';
 
-export const API_URL = 'http://localhost:3000/api';
+export const API_URL = 'http://localhost:3300/api';
 
 export default async (endpoint, method = 'get', body) => {
   const cookies = new Cookies();

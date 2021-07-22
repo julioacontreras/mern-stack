@@ -1,27 +1,21 @@
-require('dotenv').config()
+require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const Boot = require('./boot');
 const app = express();
 const apiPort = process.env.PORT;
+if (process.env.NODE_ENV === 'DEVELOPMENT') {
+  console.info('🐵 DEVELOPMENT MODE')
+  const cors = require('cors');
+  app.use(cors());
+}
 
-// register database
-const db = require('./db');
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-// register authentication
-const User = require('./models/user')
-require('./services/auth/register')(app, (data) => {
-    return User.find(data)
-});
-
-// register cloudnary
-require('./services/cloudinary/register')(app);
+// initialize application
+Boot(app)
 
 // prepare & register routes
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
 app.use(bodyParser.json());
 const routes = require('./routes')(app);
 app.use('/api', routes);

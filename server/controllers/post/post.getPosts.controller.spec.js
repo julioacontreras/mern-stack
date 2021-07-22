@@ -16,6 +16,7 @@ describe('Test method getPosts', () => {
   test('GET /api/posts', async () => {
     const post = await Post.create({
       name: 'John',
+      userId: '1',
       title: 'post 1',
       content: 'hellow world',
       slug: 'post',
