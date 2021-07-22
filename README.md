@@ -1,6 +1,7 @@
 
-# 🚀 Alaya mern dev challenge 
+# 🚀 MERN Stack example
 
+This is a (MongoDB + Express + React + Node) application example, enjoy!
 ## Server Build Setup
 
 ```bash
