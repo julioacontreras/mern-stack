@@ -13,7 +13,7 @@ export function PostDetailPage() {
 
   useEffect(() => {
     if (!post) dispatch(fetchPost(cuid));
-  }, []);
+  });
 
   return (post
     ?

@@ -20,11 +20,19 @@ function PostListItem({ post, onDelete }) {
   const classes = useStyles();
   return (
     <Card className="w-100 my-4">
-      <CardMedia
-        className={classes.media}
-        image={post.imageUrl}
-        title="Card image"
-      />      
+      { post.imageUrl ?
+        <CardMedia
+          className={classes.media}
+          image={post.imageUrl}
+          title="Card image"
+        />
+        :
+        <CardMedia
+          className={classes.media}
+          image='https://res.cloudinary.com/dybzozfpq/image/upload/v1626651036/assets/img/m7bfatktfs04jmlmykyq.png'
+          title="Card image"
+        />
+      }
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
           <Link to={`/posts/${post.cuid}/${post.slug}`} >

@@ -54,6 +54,8 @@ export function fetchPost(cuid) {
       } else {
         return dispatch(errorCreatePost())
       }
+    }).catch(() => {
+      dispatch(errorCreatePost())
     });
   };
 }
@@ -77,7 +79,6 @@ export function errorDeletePost() {
   };
 }
 
-
 export function deletePostRequest(cuid) {
   return (dispatch) => {
     return callApi(`posts/${cuid}`, 'delete').then(({ _, res }) => {
@@ -86,6 +87,8 @@ export function deletePostRequest(cuid) {
       } else {
         return dispatch(errorDeletePost())
       }
+    }).catch(() => {
+      dispatch(errorCreatePost())
     });
   };
 }
