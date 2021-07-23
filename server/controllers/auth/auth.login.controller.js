@@ -9,13 +9,16 @@ module.exports = (app) => {
     const password = req.body.password ? sanitizeHtml(req.body.password) : ''
     if (!(username && password)) {
       res.status(401).json({ message: 'invalid-parameters' });
+      return
     }
     // find user & check password
     const user = await User.findOne({ username });
     if (!user) {
       res.status(401).json({ message: 'no-such-user-found' });
+      return
     }
-    if (User.isValidPassword(user, password)) {
+    const isValid = await User.isValidPassword(user, password)
+    if (isValid === true) {
       // send token to put in request header
       const payload = { id: user.id };
       const token = AuthService.getToken(payload)

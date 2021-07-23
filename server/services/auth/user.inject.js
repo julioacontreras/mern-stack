@@ -4,7 +4,7 @@ module.exports = {
   createHashFromPassword: (passwordPlain) => {
     return bcrypt.hash(passwordPlain, 10)
   },
-  isValidPassword: (user, passwordPlain) => {
-    return bcrypt.compare(passwordPlain, user.password)
+  isValidPassword: async (user, passwordPlain) => {
+    return await bcrypt.compare(passwordPlain, user.password)
   }
 }

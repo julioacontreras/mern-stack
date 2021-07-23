@@ -43,7 +43,7 @@ const AuthReducer = (state = initialState, action) => {
       return {
         token: state.token,
         name: state.name,
-        errorMessage: 'Internal error'
+        errorMessage: 'Try another username'
       }
     default:
       return state;
