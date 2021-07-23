@@ -1,7 +1,12 @@
 
 # 🚀 MERN Stack example
 
-This is a (MongoDB + Express + React + Node) application example, enjoy!
+This is a (MongoDB + Express + React + Node) application, enjoy!
+
+More:
+* Authentication JWT: https://jwt.io/
+* Upload using api Cloudnary: https://cloudinary.com/
+
 ## Server Build Setup
 
 ```bash
