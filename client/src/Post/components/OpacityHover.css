@@ -1,0 +1,13 @@
+.OpacityHover {
+  transition: all 0.4s ease-out;
+  opacity: 0.7;
+}
+
+.OpacityHover:hover {
+  opacity: 1;
+}
+
+.OpacityHover:not(:hover) {
+  transition: all 0.4s ease-out;
+  opacity: 0.7;
+} 

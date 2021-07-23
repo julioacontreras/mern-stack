@@ -1,0 +1,9 @@
+.GrayscaleHover {
+  transition: all 0.4s ease-out;
+  filter: grayscale(100%);
+}
+
+.GrayscaleHover:hover {
+  transition: all 0.4s ease-out;
+  filter: grayscale(0%);
+}

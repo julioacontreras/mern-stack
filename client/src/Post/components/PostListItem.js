@@ -8,6 +8,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
+import './OpacityHover.css';
+import './GrayscaleHover.css';
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -19,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 function PostListItem({ post, onDelete }) {
   const classes = useStyles();
   return (
-    <Card className="w-100 my-4">
+    <Card className="w-100 my-4 OpacityHover GrayscaleHover">
       { post.imageUrl ?
         <CardMedia
           className={classes.media}
