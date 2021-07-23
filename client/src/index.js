@@ -9,9 +9,9 @@ import App from './App';
 
 // Middleware and store enhancers
 const enhancers = [
-    applyMiddleware(thunk),
+  applyMiddleware(thunk),
 ];
 
-const initialStore = createStore(combineReducers({ posts, auth }), { }, compose(...enhancers));
+const initialStore = createStore(combineReducers({ posts, auth }), {}, compose(...enhancers));
 
-ReactDOM.render(<App store={initialStore}/>, document.getElementById('root'));
+ReactDOM.render(<App store={initialStore} />, document.getElementById('root'));
