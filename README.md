@@ -7,6 +7,7 @@ More:
 * Authentication JWT: https://jwt.io/
 * Upload using api Cloudnary: https://cloudinary.com/
 
+*Dont forget set your `.env` in client and server*
 ## Server Build Setup
 
 ```bash
